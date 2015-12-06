@@ -3,7 +3,7 @@
 
 # 任务清单
 ### 12月5日
-- [ ] SVN工具的熟悉及使用
-- [ ] Android Studio ide的熟悉及使用
-- [ ] 相关文档，相关API查询
-- [ ] 了解了一下 Android编程规范
+- [x] SVN工具的熟悉及使用
+- [x] Android Studio ide的熟悉及使用(Debug技巧)
+- [x] 相关文档，相关API查询
+- [x] 了解了一下 Android编程规范
