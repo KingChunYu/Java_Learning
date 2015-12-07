@@ -79,3 +79,43 @@ interface inter1 extends inter1 inter2｛
 - 认识泛性（跟c+＋中的模版template一样）
 - java中的泛型有通配符的概念？
 - java也有类似于C++中的泛型数组，泛型方法。详情见代码清单
+
+**java集合-collection**
+- List接口饰collection的子接口
+- List中的常用方法，参考API即可(跟C++中的Vector容器基本一样)
+- ArrayList和Vector有一定的区别
+  ArrayList异步非线程安全，Vector同步线程安全
+- Set(数学概念上的集合，不能重复的元素)
+ HashSet(散列方法，无序存放)
+ TreeSet(有序的存放，可以内部自动排序)
+- Iterator饰标准的迭代访问器，最好遵循集合就使用Iterator进行遍历（类似于一个指针）
+```
+  //Iterator 简单使用
+Iterator<String> iter = list.iterator();
+
+        while (iter.hasNext()) {
+            String str = iter.next();
+            if ("B".equals(str)) {
+                iter.remove();
+            } else {
+                System.out.println(str);
+            }
+        }
+```
+- 注意区分Iterator中的remove和list等集合的remove方法的区别
+  在迭代输出的过程中不要轻易删除元素
+- Map类似于oc中的NSDictory(Key－value对,key不允许重复)
+```
+//map的简单使用
+       Map<String,String> map = new HashMap<String,String>();
+       map.put("key1","xiaoyu");
+       map.put("key2","xiaomingg");
+
+       Set<String> set = map.keySet();
+       Iterator<String> iterator = set.iterator();
+       while(iterator.hasNext())
+       {
+           System.out.println(iterator.next());
+       }
+```
+- 详细用法，请参阅API
