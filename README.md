@@ -34,6 +34,7 @@
 
 ### <a name="20151207"/> 2015年12月7日
 －**java语言（局部进阶）**
+- [x] java中的泛性学习
 - [x] java中常用集合类的学习（List，Map，Set）
 - [x] java中本地文件的操作（FileInputStream，）
 - [x] 尝试了一下apache的IO库
