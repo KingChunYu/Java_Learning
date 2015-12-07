@@ -14,6 +14,7 @@
         * [java泛型](#java010)：
         * [java集合－collection](#java011)：
         * [java中的文件类](#java012)：
+        * [java中的IO操作](#java013)：
 
 
 
@@ -144,9 +145,118 @@ Iterator<String> iter = list.iterator();
 ```
 - 详细用法，请参阅API
 
-### <a name="java012"> ** java中的文件类**
+### <a name="java012"> **java中的文件类**
 - File类常用属性可参阅API文档
 - FileInputStream 是一个字节流，承载文件输入
 - InputStreamReader 是一个字符流，从字符流转过来的时候需要指定编码类型。
 - BufferedReader  具有缓冲功能的一个Reader（使用完均须关闭）
+  对磁盘的操作叫少。
+
+```
+
+        File file = new File("Hello.txt");
+        if (file.exists()) {
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(file);
+                InputStreamReader isr = null;
+                try {
+                    isr = new InputStreamReader(fis, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                BufferedReader br = new BufferedReader(isr);
+                String line = null;
+                try {
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    isr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+```
+
 - 输出流于上面类似，注意编码潜在问题即可。
+### <a name="java013"> **java中的IO操作**
+- 区分字节流和字符流
+
+```
+public static void ioRead() {
+       FileInputStream fis = null;
+       try {
+           fis = new FileInputStream("test.txt");
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       }
+       byte input[] = new byte[10];
+       try {
+           fis.read(input);
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+       String inputString = new String(input);
+       System.out.println(inputString);
+       try {
+           fis.close();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
+
+   public static void ioWrite() {
+       FileOutputStream fos = null;
+       try {
+           fos = new FileOutputStream("outWrite");
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       }
+       String outWriter = "写出到文件上面";
+       byte output[] = outWriter.getBytes();
+       try {
+           fos.write(output);
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+       try {
+           fos.close();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
+```
+
+- FileWrite/FileRead
+- Apache 提供了很优秀的IO库，可以简单尝试一下
+
+```
+public static void useApache() {
+        File file = new File("test.txt");
+        String str = null;
+        try {
+            str = FileUtils.readFileToString(file, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(str);
+
+    }
+```
