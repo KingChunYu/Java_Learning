@@ -145,4 +145,8 @@ Iterator<String> iter = list.iterator();
 - 详细用法，请参阅API
 
 ### <a name="java012"> ** java中的文件类**
-- File类
+- File类常用属性可参阅API文档
+- FileInputStream 是一个字节流，承载文件输入
+- InputStreamReader 是一个字符流，从字符流转过来的时候需要指定编码类型。
+- BufferedReader  具有缓冲功能的一个Reader（使用完均须关闭）
+- 输出流于上面类似，注意编码潜在问题即可。
