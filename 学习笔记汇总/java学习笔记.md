@@ -56,9 +56,9 @@ interface inter1 extends inter1 inter2｛
 
 
 **java常用类：**
--String类，比较用equals（）函数
--StringBuffer类，是个操作类，缓冲区也是操作字符串（其实类似于可改变的字符串，NSMutableString）
--StringBuilder，用在字符串缓冲区被单个使用的时候，建议优先考虑该类。（其实类似于StringBuffer的简单替换）
+- String类，比较用equals（）函数
+- StringBuffer类，是个操作类，缓冲区也是操作字符串（其实类似于可改变的字符串，NSMutableString）
+- StringBuilder，用在字符串缓冲区被单个使用的时候，建议优先考虑该类。（其实类似于StringBuffer的简单替换）
 
 **java多态性：**
 - 父类指向子类和C++一样，子类指向父类会有一些区别。
@@ -71,4 +71,11 @@ interface inter1 extends inter1 inter2｛
 **java异常**
 - 利用try catch来捕获
 - throws关键字 抛出异常，抛出上层函数，类似于责任链机制。
-看参考视频
+- 看参考视频
+
+#### 2015年12月7日
+
+**java泛型**
+- 认识泛性（跟c+＋中的模版template一样）
+- java中的泛型有通配符的概念？
+- java也有类似于C++中的泛型数组，泛型方法。详情见代码清单
