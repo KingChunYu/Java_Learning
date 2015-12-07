@@ -1,19 +1,19 @@
 
 * [JAVA-学习笔记汇总](#Title)
     * [2015年12月2日~2015年12月4日](#20151202)
-      * [java 小知识点](java001)：
-      * [java 面向对象思想（多态，继承，封装](java002)
-      * [java封装性](java003)
-      * [java继承性](java004)
-      * [java抽象类，final关键字，接口](java005)
-      * [java常用类：](java006)
-      * [java多态性：](java007)
-      * [Note！Note！Note!](java008)
-      * [java异常](java009)
+      * [java 小知识点](#java001)：
+      * [java 面向对象思想（多态，继承，封装](#java002)
+      * [java封装性](#java003)
+      * [java继承性](#java004)
+      * [java抽象类，final关键字，接口](#java005)
+      * [java常用类：](#java006)
+      * [java多态性：](#java007)
+      * [Note！Note！Note!](#java008)
+      * [java异常](#java009)
     * [2015年12月7日](#20151207)
-        * [java泛型](java010)：
-        * [java集合－collection](java011)：
-        * [java中的文件类](java012)：
+        * [java泛型](#java010)：
+        * [java集合－collection](#java011)：
+        * [java中的文件类](#java012)：
 
 
 
