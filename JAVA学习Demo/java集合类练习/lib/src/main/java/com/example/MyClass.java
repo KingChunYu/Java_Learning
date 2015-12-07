@@ -32,14 +32,13 @@ public class MyClass {
             }
         }
         //map的简单使用
-        Map<String,String> map = new HashMap<String,String>();
-        map.put("key1","xiaoyu");
-        map.put("key2","xiaomingg");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("key1", "xiaoyu");
+        map.put("key2", "xiaomingg");
 
         Set<String> set = map.keySet();
         Iterator<String> iterator = set.iterator();
-        while(iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
 
