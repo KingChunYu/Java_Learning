@@ -267,7 +267,7 @@ public static void useApache() {
 
     }
 ```
-## <a name="20151202"> **2015年12月8日**
+## <a name="20151208"> **2015年12月8日**
 ### <a name="java014"> **java多线程**
 - java中线程的实现（继承Thread类，实现Runnable接口）
 - 线程中的状态
