@@ -33,14 +33,18 @@
 - [x] 学习新人网络培训课程
 
 ### <a name="20151207"/> 2015年12月7日
-－**java语言（局部进阶）**
+－ **java语言（局部进阶）**
 - [x] java中的泛性学习
 - [x] java中常用集合类的学习（List，Map，Set）
 - [x] java中本地文件的操作（FileInputStream，）
 - [x] 尝试了一下apache的IO库
 
 ### <a name="20151208"/> 2015年12月8日
-－**java语言（局部进阶之二）**
-- [ ] java多线程的了解
-- [ ] java语言的json操作的了解
-- [ ] java中的XML操作的了解
+－ **java语言（局部进阶之二）**
+- [x] java多线程的了解
+- [x] java语言的json操作的了解
+
+－ **Android基础入门之一**
+- [x] Android中数据传递方式的了解及学习
+- [x] Android中的基本概念的了解及学习
+- [x] Android中的Service了解
