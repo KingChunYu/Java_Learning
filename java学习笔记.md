@@ -260,3 +260,130 @@ public static void useApache() {
 
     }
 ```
+## <a name="20151202"> **2015年12月8日**
+### <a name="java014"> **java多线程**
+- java中线程的实现（继承Thread类，实现Runnable接口）
+- 线程中的状态
+  创建状态：准备好了一个多线程的对象
+  就绪状态：调用了start（）方法，等待cpu进行调度
+  运行状态：执行run（）方法
+  阻塞状态：暂时停止执行，可能将资源交给其他线程使用
+  终止状态：（死亡状态）：线程销毁
+- Thread类常用方法（getname，currentthread，isalive，join，sleep）
+- synchronized(同步代码块，同步方法) 有效避免资源竞争
+
+### <a name="java015"> **Android中的数据传递**
+- Activity简单来说是一个界面的承载体，类似于ios中的Controller，可以通过其进行页面切换
+  （可切换至网页）回退等()。
+- Activity 传递简单数据
+  传递数据Intent.putExtra();
+  获取Intent getIntent()
+  获取数据:  getStringData()
+
+- 传递数据包Bundle
+
+- 传递值对象（类似于ios中的dataModel）
+   * 值对象需要implement  Serializable
+   * 值对象或者需要实现Parcelable（Android提供的）
+- 在使用内存的时候，Parcelable比Serializable性能高，所以推荐使用Parcelable
+
+```
+public class User implements Parcelable {
+
+    private String name;
+    private int age;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(age);
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source.readString(), source.readInt());
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+}
+
+```
+- Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC
+
+- 获取Activity返回参数
+
+```
+btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("data", editText.getText().toString());
+                setResult(1, i);
+                finish();
+            }
+        });
+
+```
+类似于回调的东西
+
+```
+@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        textView1.setText(data.getStringExtra("data"));
+    }
+
+```
+- 标准的Activity启动模式也是堆栈管理的，跟navigationcontroller一样
+- 注意一下，Activity的启动模式的区别。（明确了四种任务站的方式）
+
+### <a name="java016"> **Android中的Intent**
+- Intent可以作为数据的承载，也可以作为启动Activity时的一个媒介
+- 隐饰Intent，可以在manifest.XML 配置（启动其他应用程序中的activity，可利用export配置响应属性 ）
+- Intent过滤器相关（配置属性参考文档即可）
+- 内部浏览器可以启动本机上的activity
+
+### <a name="java017"> **Android中的Context**
+- Context是一个用来访问全局信息的接口，便于访问资源（信息共享的桥梁）
+- 继承自application 的类，可以全局获得，作为全局上下文的载体（共享数据）对与同一个应用程序是唯一的。
+- application的 onCreate函数会比Activity的onCteate函数先执行，这对于做一些提前配置操作非常有用
+
+### <a name="java018"> **Android中的Service**
+- 可以使程序在后台运行
+  startService（）
+  stopService（）
+  onStartCommand（）当外界开始startService候，开始执行。
+- 绑定服务(也是启动服务的一种方法)
+  bindService（）;
+  unBindService();
