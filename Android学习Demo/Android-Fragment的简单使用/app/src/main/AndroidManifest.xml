@@ -15,6 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SliderActivity"
+            android:label="@string/title_activity_slider"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TabAC"
+            android:label="@string/title_activity_tab_ac"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

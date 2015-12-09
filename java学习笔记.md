@@ -404,4 +404,5 @@ btn.setOnClickListener(new View.OnClickListener() {
 
 ### <a name="java020"> **Android中的Fragment**
 - Fragment较Activity轻量级，做界面切换比较灵活（适用于同一程序内部快速跳转）
--
+- Fragment的[生命周期](http://developer.android.com/intl/zh-cn/guide/components/fragments.html
+)

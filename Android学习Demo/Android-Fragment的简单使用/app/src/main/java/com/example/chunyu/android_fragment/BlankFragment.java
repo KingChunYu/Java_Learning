@@ -37,6 +37,19 @@ public class BlankFragment extends Fragment {
                         .commit();
             }
         });
+        rootView.findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              startActivity(new Intent(getActivity(), SliderActivity.class));
+            }
+        });
+
+        rootView.findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),TabAC.class));
+            }
+        });
         return rootView;
     }
 }
