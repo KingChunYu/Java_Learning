@@ -394,3 +394,14 @@ btn.setOnClickListener(new View.OnClickListener() {
 - 绑定服务(也是启动服务的一种方法)
   bindService（）;
   unBindService();
+
+### <a name="java019"> **Android中的BroadcastReceiver**
+- BroadcastReceiver消息接收器，跟IOS中的NSNotificationCenter类似
+- 消息也有对应的注册和注销跟IOS中的addNotification/removeNotification一样
+- 消息有优先级的机制，另外可以在优先级高的响应中abortReceiver（）阻断其他消息
+- Android 的权限管理（可以在manifest文件中进行配置）
+- 也可以为组件添加权限控制
+
+### <a name="java020"> **Android中的Fragment**
+- Fragment较Activity轻量级，做界面切换比较灵活（适用于同一程序内部快速跳转）
+-
