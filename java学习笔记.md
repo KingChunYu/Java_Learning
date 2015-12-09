@@ -406,3 +406,9 @@ btn.setOnClickListener(new View.OnClickListener() {
 - Fragment较Activity轻量级，做界面切换比较灵活（适用于同一程序内部快速跳转）
 - Fragment的[生命周期](http://developer.android.com/intl/zh-cn/guide/components/fragments.html
 )
+### <a name="java021"> **Android中的常用布局**
+- FrameLayout布局（类似于图层）
+- LineLayout布局 （代码尝试）
+  layout_weight 属性控制其所占父容器的比重
+- Relativelayout布局
+  类似于IOS中的autolayout中的constrain
