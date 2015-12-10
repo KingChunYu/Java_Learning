@@ -417,3 +417,19 @@ btn.setOnClickListener(new View.OnClickListener() {
   layout_weight 属性控制其所占父容器的比重
 - Relativelayout布局
   类似于IOS中的autolayout中的constrain的添加
+
+## <a name="20151209"> **2015年12月9日**
+### ### <a name="java022"> **Android中的Adapter**
+- Adapter 可以理解为一个数据源接口，类似于IOS中的代理数据源
+- ArrayAdapter,简洁功能有局限，适用于列表是TextView的形式。
+- SimpleAdapter 功能较为强大，适用于列表项中的元素多样的形式。
+- BaseAdapter  非常适用于拓展的列表项，
+- Handle 的理解，作用（主要接收子线程发送的数据，并用此数据配合住线程更新UI）
+  跟IOS开发一样，UI相关操作，必须在主线程中进行,有网络请求的时候一般另开线程
+  进行数据请求，请求完毕在传递相应数据到主线程进行UI更新,
+- inflate与findViewById的区别  
+    * inflate 方法与 findViewById 方法不同；
+    * inflater 是用来找 res/layout 下的 xml 布局文件，并且实例化；
+    * findViewById() 是找具体 xml 布局文件中的具体 widget 控件(如:Button、TextView 等)。
+- NotificationManager的用法和和IOS中的NSNotificationCenter类似，不过其意义不同，IOS中的通知是
+指全局中，发广播，而Android中的通知指的是状态栏通知
