@@ -51,7 +51,14 @@
 - [x] Android中的Service了解
 
 ### <a name="20151209"/> 2015年12月9日
-－ **java语言（局部进阶之二）**
+－ **Android基础入门之二**
 - [x] Android中的常用布局了解
 - [x] Android中的BroadcastReceiver了解
 - [x] Android中的Fragment了解
+
+### <a name="20151210"/> 2015年12月10日
+－ **Android基础入门之三**
+- [x] Android中的Adapter接口了解及学习
+- [x] Android中的Handle的作用及了解
+- [x] Android中的inflate与findViewById的了解及学习
+- [x] Android中的常用组件的了解及学习
