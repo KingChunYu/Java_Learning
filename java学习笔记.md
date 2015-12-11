@@ -427,7 +427,8 @@ btn.setOnClickListener(new View.OnClickListener() {
 - Adapter 可以理解为一个数据源接口，类似于IOS中的代理数据源
 - ArrayAdapter,简洁功能有局限，适用于列表是TextView的形式。
 - SimpleAdapter 功能较为强大，适用于列表项中的元素多样的形式。
-- BaseAdapter  非常适用于拓展的列表项，
+- BaseAdapter  非常适用于拓展的列表项
+
 ### <a name="java023"> **Android中的重要细节**
 - Handle 的理解，作用（主要接收子线程发送的数据，并用此数据配合住线程更新UI）
   跟IOS开发一样，UI相关操作，必须在主线程中进行,有网络请求的时候一般另开线程
