@@ -402,7 +402,9 @@ btn.setOnClickListener(new View.OnClickListener() {
 - 绑定服务(也是启动服务的一种方法)
   bindService（）;
   unBindService();
+
 ## <a name="20151209"> **2015年12月9日**
+
 ### <a name="java019"> **Android中的BroadcastReceiver**
 - BroadcastReceiver消息接收器，跟IOS中的NSNotificationCenter类似
 - 消息也有对应的注册和注销跟IOS中的addNotification/removeNotification一样
