@@ -29,7 +29,7 @@
         * [Android中的Adapter](#java022)：
         * [Android中的重要细节](#java023)：
     * [2015年12月11日](#20151211)
-        * [Android中的事件处理](#java024)：
+        * [Android中的事件处理（回调，监听)](#java024)：
         * [Handle,Loop, MessageQueue的工作原理](#java025)：
         * [AsyncTask任务](#java026)：
 
