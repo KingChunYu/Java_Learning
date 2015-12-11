@@ -10,6 +10,7 @@
     * [2015年12月8日](#20151208)
     * [2015年12月9日](#20151209)
     * [2015年12月10日](#20151210)
+    * [2015年12月11日](#20151211)
 
 
 # <a name="Title"/>任务清单
@@ -58,9 +59,8 @@
 - [x] Android中的BroadcastReceiver了解
 - [x] Android中的Fragment了解
 
-### <a name="20151210"/> 2015年12月10日
+### <a name="20151211"/> 2015年12月11日
 － **Android基础入门之三**
-- [x] Android中的Adapter接口了解及学习
-- [x] Android中的Handle的作用及了解
-- [x] Android中的inflate与findViewById的了解及学习
-- [x] Android中的常用组件的了解及学习
+- [x] Android中的事件处理（事件源，事件，事件监听器）
+- [x] Handle，Loop，MessageQueue工作原理
+- [x] AsyncTask任务
