@@ -28,6 +28,10 @@
     * [2015年12月10日](#20151210)
         * [Android中的Adapter](#java022)：
         * [Android中的重要细节](#java023)：
+    * [2015年12月11日](#20151211)
+        * [Android中的事件处理](#java024)：
+        * [Handle,Loop, MessageQueue的工作原理](#java025)：
+        * [AsyncTask任务](#java026)：
 
 
 
@@ -441,3 +445,27 @@ btn.setOnClickListener(new View.OnClickListener() {
     * findViewById() 是找具体 xml 布局文件中的具体 widget 控件(如:Button、TextView 等)。
 - NotificationManager的用法和和IOS中的NSNotificationCenter类似，不过其意义不同，IOS中的通知是
 指全局中，发广播，而Android中的通知指的是状态栏通知
+
+## <a name="20151211"> **2015年12月11日**
+### <a name="java024"> **Android中的事件处理**
+- 监听的事件模型（事件源，事件，事件监听器）
+   事件源：事情的发生场所，如按钮等
+   事件：时间类型，如点击，轻敲，重击
+   事件监听器：可以理解为事件响应的代理者，代理者的函数来处理响应
+- 基于监听的事件处理
+    这种模式跟IOS中类似，利用代理模式的思想（事件源，和事件监听器有效分离）
+- 基于回调的事件处理
+    这种模式的事件源和事件监听器是在一体的，实现方式是通过集成GUI组件来重写对应方法
+- 事件传递机制，采用责任链机制，如果Button的一的回调响应失败，这上报其父容器进行方法的实现
+- 基于监听的事件处理模型更佳有优势。
+
+### <a name="java025"> **Handle,Loop, MessageQueue的工作原理**
+- Message: Handler接受和处理的消息对象
+- Looper: 每个线程智能拥有一个Looper，他的loop方法负责读取MessageQueue中的消息，读到信息滞后就
+把消息交给发送该消息的Handler进行处理。(类似于IOS中的Runloop,简单的理解为消息派遣和分发的消息中心)
+- MessageQueue 消息队列，跟操作系统里面的消息队列概念一样，先进先出的管理方式
+
+### <a name="java026"> **AsyncTask任务**
+- 必须在UI线程中创建AsyncTask的实例
+- 必须在UI线程中调用AsynTask的execute()方法
+- 每个AsyncTask只能被执行一次，多次调用将会引发异常
