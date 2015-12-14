@@ -32,7 +32,9 @@
         * [Android中的事件处理（回调，监听)](#java024)：
         * [Handle,Loop, MessageQueue的工作原理](#java025)：
         * [AsyncTask任务](#java026)：
-
+    * [2015年12月14日](#20151214)
+        * [Action，Category，Data，Type的作用](#java027)：
+        * [Android的数据存储与IO](#java028)：
 
 
 
@@ -469,3 +471,16 @@ btn.setOnClickListener(new View.OnClickListener() {
 - 必须在UI线程中创建AsyncTask的实例
 - 必须在UI线程中调用AsynTask的execute()方法
 - 每个AsyncTask只能被执行一次，多次调用将会引发异常
+
+## <a name="20151214"> **2015年12月14日**
+### <a name="java027"> **Action，Category，Data，Type的作用**
+- Action简单来说是一个字符串表示的动作，可以通过给Intent设定Action对应的标示，
+从而启动与标示匹配的Activity等组件(若有多个Action，则匹配一个表示，就有可能被启动)
+- Catagory 是和Action搭配使用的一个属性，当Action和Category均匹配的时候就可以启动对应的组件
+- Data通常向Action属性提供操作的数据，Data属性接受一个Uri对象
+- Type属性用于指定Data属性所指的Uri对应的MiME类型。
+- Data 可以简单理解为对匹配规则的又一层过滤（通常Data和Action结合使用，来打开特定界面）
+### <a name="java028"> **Android的数据存储与IO**
+- SharePreferences 方式进行轻量级的数据存储（跟IOS中的NSUserDefault一样）
+- File存储（IO流,跟java中的FileInputStream和FileOutputStream一样）
+- SQLite数据库操作方式
