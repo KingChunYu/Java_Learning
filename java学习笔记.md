@@ -35,6 +35,10 @@
     * [2015年12月14日](#20151214)
         * [Action，Category，Data，Type的作用](#java027)：
         * [Android的数据存储与IO](#java028)：
+    * [2015年12月15日](#20151215)
+            * [Android中的Service详解](#java029)：
+            * [Android中的多媒体应用](#java030)：
+
 
 
 
@@ -484,3 +488,34 @@ btn.setOnClickListener(new View.OnClickListener() {
 - SharePreferences 方式进行轻量级的数据存储（跟IOS中的NSUserDefault一样）
 - File存储（IO流,跟java中的FileInputStream和FileOutputStream一样）
 - SQLite数据库操作方式
+
+## <a name="20151215"> **2015年12月15日**
+### <a name="java029"> **Android中的ContentProvider**
+- Uri 的了解（跟URl资源定位符一样）
+  content:// 类似于http://
+  org.xxx.xxx.xx 类似于域名
+  words 类似于url中的所带有参数
+- ContentProvider 可以看作一个提供数据的“服务器”
+- ContentResolver 可以看作一个操作数据的“客户端”
+- ContentResolver所做的操作，通过Uri标示，在Contentprovider里面做响应的操作
+- ContentObserver负责监听ContentProvider数据的改变
+### <a name="java030"> **Android中的Service详解**
+- 启动Service的方式
+  startService（）方法通过该方法启动Service，访问者与Service之间没有关联，即使访问者
+  一旦退出了，Service也仍然运行。
+  bindService（）方法：使用该方法启动Service，访问者与Service绑定在一起，访问者一旦退出了，Service也
+  仍然运行。
+- 注意：Android5.0开始以后，Google要求必须使用显示的Intent启动Service组件
+- 一般情况下想要鱼Service进行通信，通过返回的IBinder进行实现，IBinder对象，类似于Service组件
+  的内部钩子。
+- IntentService会创建单独的worker线程来处理所有的Intent的请求
+- IntentService会创建单独的worker线程来处理onHandleIntent（）方法实现的代码，因此开发者
+无需处理多线程的问题。
+- BroadcastReceiver
+### <a name="java030"> **Android中的多媒体应用**
+- MediaPlayer类中细节
+  prepare（）装载资源会阻塞UI线程
+  prepareAsync（）是异步的，它不会阻塞UI线程
+- AudioEffect 主要控制音效
+- SoundPool 主要控制音效的播放。采用内存池的概念来管理多个短促的音效。
+  另外SoundPool还支持自行设置声音的品质，音量，播放比率等参数。
