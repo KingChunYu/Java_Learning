@@ -76,5 +76,6 @@
 
 ### <a name="20151215"/> 2015年12月15日
 － **Android基础入门之五**
+- [x] Android中的ContentProvider
 - [x] Android中的Service详解
 - [x] Android中的多媒体应用
