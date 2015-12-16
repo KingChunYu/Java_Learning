@@ -523,3 +523,8 @@ btn.setOnClickListener(new View.OnClickListener() {
 - AudioEffect 主要控制音效
 - SoundPool 主要控制音效的播放。采用内存池的概念来管理多个短促的音效。
   另外SoundPool还支持自行设置声音的品质，音量，播放比率等参数。
+
+## <a name="20151215"> **2015年12月16日**
+
+### <a name="java029"> **Android中的网络应用**
+- 使用Socket进行通信
