@@ -490,6 +490,7 @@ btn.setOnClickListener(new View.OnClickListener() {
 - SQLite数据库操作方式
 
 ## <a name="20151215"> **2015年12月15日**
+
 ### <a name="java029"> **Android中的ContentProvider**
 - Uri 的了解（跟URl资源定位符一样）
   content:// 类似于http://
@@ -499,6 +500,7 @@ btn.setOnClickListener(new View.OnClickListener() {
 - ContentResolver 可以看作一个操作数据的“客户端”
 - ContentResolver所做的操作，通过Uri标示，在Contentprovider里面做响应的操作
 - ContentObserver负责监听ContentProvider数据的改变
+
 ### <a name="java030"> **Android中的Service详解**
 - 启动Service的方式
   startService（）方法通过该方法启动Service，访问者与Service之间没有关联，即使访问者
