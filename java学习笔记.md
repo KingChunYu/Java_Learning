@@ -39,6 +39,11 @@
         * [Android中的ContentProvider](#java029)：
         * [Android中的Service详解](#java030)：
         * [Android中的多媒体应用](#java031)：
+    * [2015年12月16日](#20151216)
+        * [Android项目源码的熟悉](#java032)：
+        * [Andorid中的网络应用](#java033)：
+
+
 
 
 
@@ -526,5 +531,12 @@ btn.setOnClickListener(new View.OnClickListener() {
 
 ## <a name="20151215"> **2015年12月16日**
 
-### <a name="java029"> **Android中的网络应用**
+### <a name="java032"> **Android中的网络应用**
 - 使用Socket进行通信
+ Socket  accept()此操作会阻塞线程。
+ ServerSocket 用于用与监听Socket的连接请求（跟普通的socket编程一样）
+- 使用URL访问网络资源
+ 可以理解URL是URI的特例，可以很方便读取远程资源
+- 使用URLConnetion提交网络请求（跟IOS中的NSConnection类似）
+- 使用HttpURLConnetion是对URLConnetion的进一步封装，使用更佳方便。
+- HttpClient 更加强大的网络类，封装了常用的方法，使用较为简单。
