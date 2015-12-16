@@ -512,7 +512,8 @@ btn.setOnClickListener(new View.OnClickListener() {
 - IntentService会创建单独的worker线程来处理onHandleIntent（）方法实现的代码，因此开发者
 无需处理多线程的问题。
 - BroadcastReceiver
-### <a name="java030"> **Android中的多媒体应用**
+
+### <a name="java031"> **Android中的多媒体应用**
 - MediaPlayer类中细节
   prepare（）装载资源会阻塞UI线程
   prepareAsync（）是异步的，它不会阻塞UI线程
