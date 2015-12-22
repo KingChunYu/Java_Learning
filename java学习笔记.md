@@ -40,8 +40,10 @@
         * [Android中的Service详解](#java030)：
         * [Android中的多媒体应用](#java031)：
     * [2015年12月16日](#20151216)
-        * [Android项目源码的熟悉](#java032)：
-        * [Andorid中的网络应用](#java033)：
+        * [Andorid中的网络应用](#java032)：
+    * [2015年12月22日](#20151222)
+        * [Android中的常用单位](#java033)：
+
 
 
 
@@ -529,7 +531,7 @@ btn.setOnClickListener(new View.OnClickListener() {
 - SoundPool 主要控制音效的播放。采用内存池的概念来管理多个短促的音效。
   另外SoundPool还支持自行设置声音的品质，音量，播放比率等参数。
 
-## <a name="20151215"> **2015年12月16日**
+## <a name="20151216"> **2015年12月16日**
 
 ### <a name="java032"> **Android中的网络应用**
 - 使用Socket进行通信
@@ -540,3 +542,20 @@ btn.setOnClickListener(new View.OnClickListener() {
 - 使用URLConnetion提交网络请求（跟IOS中的NSConnection类似）
 - 使用HttpURLConnetion是对URLConnetion的进一步封装，使用更佳方便。
 - HttpClient 更加强大的网络类，封装了常用的方法，使用较为简单。
+
+## <a name="20151222"> **2015年12月22日**
+
+### <a name="java033"> **Android中的常用单位**
+- Px（Pixel像素）：不同设备显示效果相同。这里的“相同”是指像素数不会变，比如指定UI长度是100px，那不管分辨率是多少UI长度都是100px。也正是因为如此才造成了UI在小分辨率设备上被放大而失真，在大分辨率上被缩小。
+ 
+- Screen Size（屏幕尺寸）：一般所说的手机屏幕大小如1.6英寸、1.9英寸、2.2英寸，都是指的对角线的长度，而不是手机面积。我们可以根据勾股定理获取手机的宽和长，当然还有面积。
+ 
+- Resolution（分辨率）:指手机屏幕垂直和水平方向上的像素个数。比如分辨率是480*320，则指设备垂直方向有480个像素点，水平方向有320个像素点。
+ 
+- Dpi（dots per inch 像素密度）:指每英寸中的像素数。如160dpi指手机水平或垂直方向上每英寸距离有160个像素点。假定设备分辨率为320*240，屏幕长2英寸宽1.5英寸，dpi=320/2=240/1.5=160
+ 
+- Density（密度）:指每平方英寸中的像素数。Density=Resolution/Screen size。注意：在DisplayMetrics类中属性density的值为dpi/160，可用于px与dip的互相转换。
+ 
+- Dip（Device-independent pixel，设备独立像素）:同dp，可作长度单位，不同设备有不同的显示效果,这个和设备硬件有关，一般我们为了支持WVGA、HVGA和QVGA 推荐使用这个，不依赖像素。dip和具体像素值的对应公式是dip值 =dpi/160* pixel值，可以看出在dpi（像素密度）为160dpi的设备上1px=1dip
+ 
+- Sp（ScaledPixels 放大像素）：主要用于字体显示（best for textsize）。根据 google 的建议，TextView 的字号最好使用 sp 做单位，而且查看TextView的源码可知 Android 默认使用 sp 作为字号单位。
