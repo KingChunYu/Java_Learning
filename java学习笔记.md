@@ -43,6 +43,14 @@
         * [Andorid中的网络应用](#java032)：
     * [2015年12月22日](#20151222)
         * [Android中的常用单位](#java033)：
+    * [2016年1月5日](#20160105)
+        * [Android合理的管理内存](#java034)：
+    * [2016年1月5日](#20160105)
+        * [Android合理的管理内存](#java034)：
+    * [2016年1月5日](#20160111)
+        * [Android中的DataBinding技术](#java035)：
+
+
 
 
 
@@ -559,3 +567,66 @@ btn.setOnClickListener(new View.OnClickListener() {
 - Dip（Device-independent pixel，设备独立像素）:同dp，可作长度单位，不同设备有不同的显示效果,这个和设备硬件有关，一般我们为了支持WVGA、HVGA和QVGA 推荐使用这个，不依赖像素。dip和具体像素值的对应公式是dip值 =dpi/160* pixel值，可以看出在dpi（像素密度）为160dpi的设备上1px=1dip
  
 - Sp（ScaledPixels 放大像素）：主要用于字体显示（best for textsize）。根据 google 的建议，TextView 的字号最好使用 sp 做单位，而且查看TextView的源码可知 Android 默认使用 sp 作为字号单位。
+
+
+## <a name="20160105"> **2016年1月5日**
+
+### <a name="java034"> **Android合理的管理内存**
+- 节制的使用Service
+- 当界面不可见时释放内存
+- 避免在Bitmap上浪费内存
+- 使用优化过的数据集合
+- 知晓内存的开支情况
+我们还应当清楚我们所使用语言的内存开支和消耗情况，并且在整个软件的设计和开发当中都应该将这些信息考虑在内。可能有一些看起来无关痛痒的写法，结果却会导致很大一部分的内存开支，例如：使用枚举通常会比使用静态常量要消耗两倍以上的内存，在Android开发当中我们应当尽可能地不使用枚举。任何一个Java类，包括内部类、匿名类，都要占用大概500字节的内存空间。任何一个类的实例要消耗12-16字节的内存开支，因此频繁创建实例也是会一定程序上影响内存的。在使用HashMap时，即使你只设置了一个基本数据类型的键，比如说int，但是也会按照对象的大小来分配内存，大概是32字节，而不是4字节。因此最好的办法就是像上面所说的一样，使用优化过的数据集合。
+详情参考：[Android合理的内存管理](http://blog.csdn.net/guolin_blog/article/details/26365913)
+
+## <a name="20160111"> **2016年1月11日**
+
+### <a name="java035"> **Android中的DataBinding技术**
+- DataBinding表达式
+Data Binding layout文件有点不同的是：起始根标签是 `layout`，接下来一个 `data` 元素以及一个 `view` 的根元素。这个 `view` 元素就是你没有使用Data Binding的layout文件的根元素。举例说明如下：
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+   <data>
+       <variable name="user" type="com.example.User"/>
+   </data>
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@{user.firstName}"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@{user.lastName}"/>
+   </LinearLayout>
+</layout>
+
+```
+在 data 内描述了一个名为user的变量属性，使其可以在这个layout中使用：
+
+```
+<variable name="user" type="com.example.User"/>
+```
+- Data对象
+任何Plain old Java object（PO​​JO）可用于Data Binding，但修改POJO不会导致UI更新。Data Binding的真正能力是当数据变化时，可以通知给你的Data对象。有三种不同的数据变化通知机制：Observable对象、ObservableFields以及observable collections。
+**Observable 字段**
+一些小工作会涉及到创建Observable类，因此那些想要节省时间或者几乎没有几个属性的开发者可以使用ObservableFields。ObservableFields是自包含具有单个字段的observable对象。它有所有基本类型和一个是引用类型。要使用它需要在data对象中创建public final字段：
+```
+private static class User extends BaseObservable {
+   public final ObservableField<String> firstName =
+       new ObservableField<>();
+   public final ObservableField<String> lastName =
+       new ObservableField<>();
+   public final ObservableInt age = new ObservableInt();
+}
+```
+就是这样，要访问改值，使用set和get方法。
+
+```
+user.firstName.set("Google");
+int age = user.age.get();
+```
