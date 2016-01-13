@@ -45,8 +45,6 @@
         * [Android中的常用单位](#java033)：
     * [2016年1月5日](#20160105)
         * [Android合理的管理内存](#java034)：
-    * [2016年1月5日](#20160105)
-        * [Android合理的管理内存](#java034)：
     * [2016年1月5日](#20160111)
         * [Android中的DataBinding技术](#java035)：
 
@@ -631,3 +629,33 @@ user.firstName.set("Google");
 int age = user.age.get();
 ```
 详细内容参阅[DataBinding技术](http://segmentfault.com/a/1190000002876984)
+
+## <a name="20160111"> **2016年1月13日**
+
+### <a name="java035"> **Android中的Reference**
+- Reference 是一个抽象类，而 SoftReference，WeakReference，PhantomReference 以及 FinalReference 都是继承它的具体类
+- StrongReference：
+我们都知道 JVM 中对象是被分配在堆（heap）上的，当程序行动中不再有引用指向这个对象时，这个对象就可以被垃圾回收器所回收。这里所说的引用也就是我们一般意义上申明的对象类型的变量（如 String, Object, ArrayList 等），区别于原始数据类型的变量（如 int, short, long 等）也称为强引用。
+```
+String tag = new String("T");
+```
+强引用可以直接访问目标对象。
+强引用可能导致内存泄漏。
+
+- SoftReference：
+SoftReference 在“弱引用”中属于最强的引用。SoftReference 所指向的对象，当没有强引用指向它时，会在内存中停留一段的时间，垃圾回收器会根据 JVM 内存的使用情况（内存的紧缺程度）以及 SoftReference 的 get() 方法的调用情况来决定是否对其进行回收。（后面章节会用几个实验进行阐述）
+
+具体使用一般是通过 SoftReference 的构造方法，将需要用弱引用来指向的对象包装起来。当需要使用的时候，调用 SoftReference 的 get() 方法来获取。当对象未被回收时 SoftReference 的 get() 方法会返回该对象的强引用。如下：
+```
+SoftReference<Bean> bean = new SoftReference<Bean>(new Bean("name", 10));   
+System.out.println(bean.get());// “name:10”  
+```
+软引用使用 get() 方法取得对象的强引用从而访问目标对象。
+软引用所指向的对象按照 JVM 的使用情况（Heap 内存是否临近阈值）来决定是否回收。
+软引用可以避免 Heap 内存不足所导致的异常。
+当垃圾回收器决定对其回收时，会先清空它的 SoftReference，也就是说 SoftReference 的 get() 方法将会返回 null，然后再调用对象的 finalize() 方法，并在下一轮 GC 中对其真正进行回收。
+- WeakReference：
+WeakReference 是弱于 SoftReference 的引用类型。弱引用的特性和基本与软引用相似，区别就在于弱引用所指向的对象只要进行系统垃圾回收，不管内存使用情况如何，永远对其进行回收（get() 方法返回 null）。
+弱引用使用 get() 方法取得对象的强引用从而访问目标对象。
+一旦系统内存回收，无论内存是否紧张，弱引用指向的对象都会被回收。
+弱引用也可以避免 Heap 内存不足所导致的异常。
