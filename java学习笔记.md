@@ -632,8 +632,10 @@ int age = user.age.get();
 
 ## <a name="20160111"> **2016年1月13日**
 
-### <a name="java035"> **Android中的Reference**
-- Reference 是一个抽象类，而 SoftReference，WeakReference，PhantomReference 以及 FinalReference 都是继承它的具体类
+### <a name="java036"> **Android中的Reference**
+- Reference
+是一个抽象类，而 SoftReference，WeakReference，PhantomReference 以及 FinalReference 都是继承它的具体类
+
 - StrongReference：
 我们都知道 JVM 中对象是被分配在堆（heap）上的，当程序行动中不再有引用指向这个对象时，这个对象就可以被垃圾回收器所回收。这里所说的引用也就是我们一般意义上申明的对象类型的变量（如 String, Object, ArrayList 等），区别于原始数据类型的变量（如 int, short, long 等）也称为强引用。
 ```
@@ -644,7 +646,6 @@ String tag = new String("T");
 
 - SoftReference：
 SoftReference 在“弱引用”中属于最强的引用。SoftReference 所指向的对象，当没有强引用指向它时，会在内存中停留一段的时间，垃圾回收器会根据 JVM 内存的使用情况（内存的紧缺程度）以及 SoftReference 的 get() 方法的调用情况来决定是否对其进行回收。（后面章节会用几个实验进行阐述）
-
 具体使用一般是通过 SoftReference 的构造方法，将需要用弱引用来指向的对象包装起来。当需要使用的时候，调用 SoftReference 的 get() 方法来获取。当对象未被回收时 SoftReference 的 get() 方法会返回该对象的强引用。如下：
 ```
 SoftReference<Bean> bean = new SoftReference<Bean>(new Bean("name", 10));   
@@ -654,8 +655,153 @@ System.out.println(bean.get());// “name:10”
 软引用所指向的对象按照 JVM 的使用情况（Heap 内存是否临近阈值）来决定是否回收。
 软引用可以避免 Heap 内存不足所导致的异常。
 当垃圾回收器决定对其回收时，会先清空它的 SoftReference，也就是说 SoftReference 的 get() 方法将会返回 null，然后再调用对象的 finalize() 方法，并在下一轮 GC 中对其真正进行回收。
+
 - WeakReference：
 WeakReference 是弱于 SoftReference 的引用类型。弱引用的特性和基本与软引用相似，区别就在于弱引用所指向的对象只要进行系统垃圾回收，不管内存使用情况如何，永远对其进行回收（get() 方法返回 null）。
 弱引用使用 get() 方法取得对象的强引用从而访问目标对象。
 一旦系统内存回收，无论内存是否紧张，弱引用指向的对象都会被回收。
 弱引用也可以避免 Heap 内存不足所导致的异常。
+
+### <a name="java037"> **Android中的Handle，Runnable，Timertask作用**
+- Android中的单线程模型：Android UI操作并不是线程安全的并且这些操作必须在UI线程中执行。（IOS同理）
+- Handler：Handler来根据接收的消息，处理UI更新。Thread线程发出Handler消息，通知更新UI。
+- Runnable：是一种接口，常常可以作为new Thread（Runnable ～）来使用。
+```
+Handler myHandler = new Handler() {  
+          public void handleMessage(Message msg) {   
+               switch (msg.what) {   
+                    case TestHandler.GUIUPDATEIDENTIFIER:   
+                         myBounceView.invalidate();  
+                         break;   
+               }   
+               super.handleMessage(msg);   
+          }   
+     };
+```
+
+```
+class myThread implements Runnable {   
+          public void run() {  
+               while (!Thread.currentThread().isInterrupted()) {    
+
+                    Message message = new Message();   
+                    message.what = TestHandler.GUIUPDATEIDENTIFIER;   
+
+                    TestHandler.this.myHandler.sendMessage(message);   
+                    try {   
+                         Thread.sleep(100);    
+                    } catch (InterruptedException e) {   
+                         Thread.currentThread().interrupt();   
+                    }   
+               }   
+          }   
+     }
+```
+- Timertask: 配合定时器Timer使用，较Thread轻量级。
+```
+public class JavaTimer extends Activity {  
+
+    Timer timer = new Timer();  
+    TimerTask task = new TimerTask(){   
+        public void run() {  
+            setTitle("hear me?");  
+        }            
+    };  
+
+    public void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.main);  
+
+         timer.schedule(task, 10000);  
+
+    }  
+}
+```
+- TimerTask+Handler:模拟出定时器
+```
+public class TestTimer extends Activity {  
+
+    Timer timer = new Timer();  
+    Handler handler = new Handler(){   
+        public void handleMessage(Message msg) {  
+            switch (msg.what) {      
+            case 1:      
+                setTitle("hear me?");  
+                break;      
+            }      
+            super.handleMessage(msg);  
+        }  
+
+    };  
+
+    TimerTask task = new TimerTask(){    
+        public void run() {  
+            Message message = new Message();      
+            message.what = 1;      
+            handler.sendMessage(message);    
+        }            
+    };  
+
+    public void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.main);  
+
+        timer.schedule(task, 10000);  
+    }  
+}
+```
+- Runnable + Handler.postDelayed(runnable,time)
+```
+private Handler handler = new Handler();  
+
+    private Runnable myRunnable= new Runnable() {    
+        public void run() {  
+
+            if (run) {  
+                handler.postDelayed(this, 1000);  
+                count++;  
+            }  
+            tvCounter.setText("Count: " + count);  
+
+        }  
+    };
+```
+- 知识点补充：
+很多初入Android或Java开发的新手对Thread、Looper、Handler和Message仍然比较迷惑，衍生的有HandlerThread、java.util.concurrent、Task、AsyncTask，今天就这一问题做更系统性的总结。我们创建的Service、Activity以及Broadcast均是一个主线程处理，这里我们可以理解为UI线程。但是在操作一些耗时操作时，比如I/O读写的大文件读写，数据库操作以及网络下载需要很长时间，为了不阻塞用户界面，出现ANR的响应提示窗口，这个时候我们可以考虑使用Thread线程来解决。
+对于从事过J2ME开发的程序员来说Thread比较简单，直接匿名创建重写run方法，调用start方法执行即可。或者从Runnable接口继承，但对于Android平台来说UI控件都没有设计成为线程安全类型，所以需要引入一些同步的机制来使其刷新，这点Google在设计Android时倒是参考了下Win32的消息处理机制。
+
+1. 对于线程中的刷新一个View为基类的界面，可以使用postInvalidate()方法在线程中来处理，其中还提供了一些重写方法比如postInvalidate(int left,int top,int right,int bottom) 来刷新一个矩形区域，以及延时执行，比如postInvalidateDelayed(long delayMilliseconds)或postInvalidateDelayed(long delayMilliseconds,int left,int top,int right,int bottom) 方法，其中第一个参数为毫秒
+
+2. 当然推荐的方法是通过一个Handler来处理这些，可以在一个线程的run方法中调用handler对象的 postMessage或sendMessage方法来实现，Android程序内部维护着一个消息队列，会轮训处理这些，如果你是Win32程序员可以很好理解这些消息处理，不过相对于Android来说没有提供 PreTranslateMessage这些干涉内部的方法。
+
+3. Looper又是什么呢? ，其实Android中每一个Thread都跟着一个Looper，Looper可以帮助Thread维护一个消息队列，但是Looper和Handler没有什么关系，我们从开源的代码可以看到Android还提供了一个Thread继承类HanderThread可以帮助我们处理，在HandlerThread对象中可以通过getLooper方法获取一个Looper对象控制句柄，我们可以将其这个Looper对象映射到一个Handler中去来实现一个线程同步机制，Looper对象的执行需要初始化Looper.prepare方法就是昨天我们看到的问题，同时推出时还要释放资源，使用Looper.release方法。
+
+4.Message 在Android是什么呢? 对于Android中Handler可以传递一些内容，通过Bundle对象可以封装String、Integer以及Blob二进制对象，我们通过在线程中使用Handler对象的sendEmptyMessage或sendMessage方法来传递一个Bundle对象到Handler处理器。对于Handler类提供了重写方法handleMessage(Message msg) 来判断，通过msg.what来区分每条信息。将Bundle解包来实现Handler类更新UI线程中的内容实现控件的刷新操作。相关的Handler对象有关消息发送sendXXXX相关方法如下，同时还有postXXXX相关方法，这些和Win32中的道理基本一致，一个为发送后直接返回，一个为处理后才返回 .
+
+5. java.util.concurrent对象分析，对于过去从事Java开发的程序员不会对Concurrent对象感到陌生吧，他是JDK 1.5以后新增的重要特性作为掌上设备，我们不提倡使用该类，考虑到Android为我们已经设计好的Task机制，这里不做过多的赘述，相关原因参考下面的介绍:
+
+6. 在Android中还提供了一种有别于线程的处理方式，就是Task以及AsyncTask，从开源代码中可以看到是针对Concurrent的封装，开发人员可以方便的处理这些异步任务。
+### <a name="java038"> **Android中的Task和AsynTask**
+- Task:Task可以理解为实现一个功能而负责管理所有用到的Activity实例的栈
+- AsyncTask：是android提供的轻量级的异步类。相比Handler轻量级。
+- 首先明确Android之所以有Handler和AsyncTask，都是为了不阻塞主线程（UI线程），且UI的更新只能在主线程中完成，因此异步处理是不可避免的。
+Android为了降低这个开发难度，提供了AsyncTask。AsyncTask就是一个封装过的后台任务类，顾名思义就是异步任务。AsyncTask直接继承于Object类，位置为android.os.AsyncTask。要使用AsyncTask工作我们要提供三个泛型参数，并重载几个方法(至少重载一个)。
+AsyncTask定义了三种泛型类型 Params，Progress和Result。
+Params 启动任务执行的输入参数，比如HTTP请求的URL。
+Progress 后台任务执行的百分比。
+Result 后台执行任务最终返回的结果，比如String。
+使用过AsyncTask 的同学都知道一个异步加载数据最少要重写以下这两个方法：
+
+doInBackground(Params…) 后台执行，比较耗时的操作都可以放在这里。注意这里不能直接操作UI。此方法在后台线程执行，完成任务的主要工作，通常需要较长的时间。在执行过程中可以调用publicProgress(Progress…)来更新任务的进度。
+onPostExecute(Result)  相当于Handler 处理UI的方式，在这里面可以使用在doInBackground 得到的结果处理操作UI。 此方法在主线程执行，任务执行的结果作为此方法的参数返回
+有必要的话你还得重写以下这三个方法，但不是必须的：
+
+onProgressUpdate(Progress…)   可以使用进度条增加用户体验度。 此方法在主线程执行，用于显示任务执行的进度。
+onPreExecute()        这里是最终用户调用Excute时的接口，当任务执行之前开始调用此方法，可以在这里显示进度对话框。
+onCancelled()             用户调用取消时，要做的操作
+使用AsyncTask类，以下是几条必须遵守的准则：
+
+Task的实例必须在UI thread中创建；
+execute方法必须在UI thread中调用；
+不要手动的调用onPreExecute(), onPostExecute(Result)，doInBackground(Params...), onProgressUpdate(Progress...)这几个方法；
+该task只能被执行一次，否则多次调用时将会出现异常；
