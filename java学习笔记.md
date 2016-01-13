@@ -630,3 +630,4 @@ private static class User extends BaseObservable {
 user.firstName.set("Google");
 int age = user.age.get();
 ```
+详细内容参阅[DataBinding技术](http://segmentfault.com/a/1190000002876984)
