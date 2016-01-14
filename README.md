@@ -116,3 +116,13 @@
 － **Android中的DataBinding技术**
 - [x] DataBinding 表达式相关
 - [x] DataBinding中observeable数据相关。
+
+### <a name="20160113"/> 2016年01月13日
+－ **Android中的DataBinding技术**
+- [x] Android中的Reference
+- [x] Android中的Handle，Runnable，Timertask作用
+
+### <a name="20160114"/> 2016年01月14日
+－ **Android中的DataBinding技术**
+- [x] Android中的Task和AsynTask
+- [x] Android中的动画
