@@ -14,34 +14,21 @@ import com.example.chunyu.databinding.databinding.ActivityMainBinding;
 import com.example.chunyu.databinding.databinding.ContentMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    ContentMainBinding contentMainBinding;
     ActivityMainBinding activityMainBinding;
-    static int i = 0;
-    DemoData demoData;
     MainDemoData mainDemoData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                demoData.text.set("num:"+i++);
-            }
-        };
-        demoData = new DemoData(onClickListener);
-        mainDemoData = new MainDemoData(demoData);
+        mainDemoData = new MainDemoData();
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setMainDemoData(mainDemoData);
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
