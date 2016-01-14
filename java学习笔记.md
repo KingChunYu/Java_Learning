@@ -805,3 +805,14 @@ Task的实例必须在UI thread中创建；
 execute方法必须在UI thread中调用；
 不要手动的调用onPreExecute(), onPostExecute(Result)，doInBackground(Params...), onProgressUpdate(Progress...)这几个方法；
 该task只能被执行一次，否则多次调用时将会出现异常；
+
+### <a name="java039"> **Android中的动画**
+- valueAnimator :可以理解为一款动画过渡器。
+- ObjectAnimator:是继承自valueAnimator的一个类，对属性进行范围控制，用法如下：
+```
+ObjectAnimator animator = ObjectAnimator.ofFloat(textview, "alpha", 1f, 3f, 1f);  
+animator.setDuration(5000);  
+animator.start();  
+```
+但是，仔细会发现，textView中并没有alpha属性，这是因为，设置属性的时候是根据访存器来的。
+-
