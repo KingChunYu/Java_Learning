@@ -823,4 +823,3 @@ animator.setDuration(5000);
 animator.start();  
 ```
 但是，仔细会发现，textView中并没有alpha属性，这是因为，设置属性的时候是根据访存器来的。
--
