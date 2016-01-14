@@ -45,8 +45,14 @@
         * [Android中的常用单位](#java033)：
     * [2016年1月5日](#20160105)
         * [Android合理的管理内存](#java034)：
-    * [2016年1月5日](#20160111)
+    * [2016年1月11日](#20160111)
         * [Android中的DataBinding技术](#java035)：
+    * [2016年1月13日](#20160113)
+        * [Android中的Reference](#java036)：
+        * [Android中的Handle，Runnable，Timertask作用](#java037)：
+    * [2016年1月14日](#20160114)
+        * [Android中的Task和AsynTask](#java038)：
+        * [Android中的动画](#java039)：
 
 
 
@@ -630,7 +636,7 @@ int age = user.age.get();
 ```
 详细内容参阅[DataBinding技术](http://segmentfault.com/a/1190000002876984)
 
-## <a name="20160111"> **2016年1月13日**
+## <a name="20160113"> **2016年1月13日**
 
 ### <a name="java036"> **Android中的Reference**
 - Reference
@@ -781,6 +787,8 @@ private Handler handler = new Handler();
 5. java.util.concurrent对象分析，对于过去从事Java开发的程序员不会对Concurrent对象感到陌生吧，他是JDK 1.5以后新增的重要特性作为掌上设备，我们不提倡使用该类，考虑到Android为我们已经设计好的Task机制，这里不做过多的赘述，相关原因参考下面的介绍:
 
 6. 在Android中还提供了一种有别于线程的处理方式，就是Task以及AsyncTask，从开源代码中可以看到是针对Concurrent的封装，开发人员可以方便的处理这些异步任务。
+## <a name="20160114"> **2016年1月14日**
+
 ### <a name="java038"> **Android中的Task和AsynTask**
 - Task:Task可以理解为实现一个功能而负责管理所有用到的Activity实例的栈
 - AsyncTask：是android提供的轻量级的异步类。相比Handler轻量级。
