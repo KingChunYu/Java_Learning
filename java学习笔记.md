@@ -893,7 +893,7 @@ while (true)
 ```
 
 ### <a name="java041"> **AIDL介绍**
--为使应用程序之间能够彼此通信，Android提供了IPC （Inter Process Communication，进程间通信）的一种独特实现： AIDL （Android Interface Definition Language，Android接口定义语言）在Android中，每个应用（Application）执行在它自己的进程中，无法直接调用到其他应用的资源，这也符合“沙箱”的理念。所谓沙箱原理，一般来说用在移动电话业务中，简单地说旨在部分地或全部地隔离应用程序。详细用法参阅[AIDL详解](http://bbs.51cto.com/thread-1086040-1.html)
+- 为使应用程序之间能够彼此通信，Android提供了IPC （Inter Process Communication，进程间通信）的一种独特实现： AIDL （Android Interface Definition Language，Android接口定义语言）在Android中，每个应用（Application）执行在它自己的进程中，无法直接调用到其他应用的资源，这也符合“沙箱”的理念。所谓沙箱原理，一般来说用在移动电话业务中，简单地说旨在部分地或全部地隔离应用程序。详细用法参阅[AIDL详解](http://bbs.51cto.com/thread-1086040-1.html)
 
 **具体用法**
 - 定义一个AIDL接口
