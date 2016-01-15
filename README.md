@@ -126,3 +126,8 @@
 － **Android中的DataBinding技术**
 - [x] Android中的Task和AsynTask
 - [x] Android中的动画
+
+### <a name="20160115"/> 2016年01月15日
+－ **Android中的DataBinding技术**
+- [x] Android中的synchronized详解
+- [x] AIDL了解及使用
