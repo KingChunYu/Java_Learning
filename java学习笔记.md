@@ -845,7 +845,8 @@ synchronized(syncObject)
 一、当两个并发线程访问同一个对象object中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。　　
 二、当一个线程访问object的一个synchronized(this)同步代码块时，其他线程对object中所有其它synchronized(this)同步代码块的访问将被阻塞。　　
 三、然而，当一个线程访问object的一个synchronized(this)同步代码块时，另一个线程仍然可以访问该object中的除synchronized(this)同步代码块以外的部分。　
-四、第三个例子同样适用其它同步代码块。也就是说，当一个线程访问object的一个synchronized(this)同步代码块时，它就获得了这个object的对象锁。结果，其它线程对该object对象所有同步代码部分的访问都被暂时阻塞。　　
+四、第三个例子同样适用其它同步代码块。也就是说，当一个线程访问object的一个synchronized(this)同步代码块时，它就获得了这个object的对象锁。结果，其它线程对该object对象所有同步代码部分的访问都被暂时阻塞。
+　　
 **synchronized的一个简单例子**
 ```
 public class TextThread
@@ -893,6 +894,7 @@ while (true)
 
 ### <a name="java041"> **AIDL介绍**
 -为使应用程序之间能够彼此通信，Android提供了IPC （Inter Process Communication，进程间通信）的一种独特实现： AIDL （Android Interface Definition Language，Android接口定义语言）在Android中，每个应用（Application）执行在它自己的进程中，无法直接调用到其他应用的资源，这也符合“沙箱”的理念。所谓沙箱原理，一般来说用在移动电话业务中，简单地说旨在部分地或全部地隔离应用程序。详细用法参阅[AIDL详解](http://bbs.51cto.com/thread-1086040-1.html)
+
 **具体用法**
 - 定义一个AIDL接口
 - 为远程服务（service）实现对应Stub
