@@ -899,3 +899,13 @@ while (true)
 - 定义一个AIDL接口
 - 为远程服务（service）实现对应Stub
 - 将服务"暴露"给客户端程序使用
+
+## <a name="20160120"> **2016年1月20日**
+### <a name="java042"> **Android中LayoutInflater详解**
+- LayoutInflater到底干了啥？
+故名思意，是用来解释布局的。而我们仅仅利用inflate方法，就可以将一个极其复杂的xml文件，解析出来。其实真正起作用的是，inflate内部利用[pull方式](http://www.cnblogs.com/JerryWang1991/archive/2012/02/24/2365507.html)进行了xml的解析
+另付：[LayoutInflater详解](http://blog.csdn.net/guolin_blog/article/details/12921889)
+### <a name="java043"> **Android中View绘制详解**
+- View是怎样被绘制的？
+每一个视图的绘制过程都必须经历三个最主要的阶段，即onMeasure()、onLayout()和onDraw()View系统的绘制流程会从ViewRoot的performTraversals()方法中开始，在其内部调用View的measure()方法。measure()方法接收两个参数，widthMeasureSpec和heightMeasureSpec，这两个值分别用于确定视图的宽度和高度的规格和大小.MeasureSpec的值由specSize和specMode共同组成的，其中specSize记录的是大小，specMode记录的是规格。specMode一共有三种类，EXACTLY，AT_MOST,UNSPECIFIED.
+详情参考:[View的绘制过程](http://blog.csdn.net/guolin_blog/article/details/16330267)
