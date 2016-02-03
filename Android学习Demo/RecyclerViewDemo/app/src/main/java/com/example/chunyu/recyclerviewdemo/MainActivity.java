@@ -17,6 +17,10 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.wasabeef.recyclerview.animators.FadeInAnimator;
+import jp.wasabeef.recyclerview.animators.LandingAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,MyAdapter.OnItemClickListener {
 
     private RecyclerView mRecyclerView;
@@ -71,14 +75,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGridLayoutManager = new GridLayoutManager(this, 3);
         mGridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mGridLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setItemAnimator(new SlideInUpAnimator());
 
     }
 
     private void useStaggeredGridLayout() {
         StaggeredGridLayoutManager mStaggeredGridLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setItemAnimator(new FadeInAnimator());
     }
 
     @Override
