@@ -6,15 +6,21 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by chunyu on 16/2/2.
  */
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private String[] mDataset;
+    //    private String[] mDataset;
+    private ArrayList<String> mDataset;
+    private OnItemClickListener mOnItemClickListener;
 
     private static class ViewHolerType {
         private static int HEADER_VIEWHOLDER = 0;
@@ -31,6 +37,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             super(v);
             mTextView = v;
         }
+    }
+
+    public void setmOnItemClickListener(OnItemClickListener mOnItemClickListener) {
+        this.mOnItemClickListener = mOnItemClickListener;
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {
@@ -53,7 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(String[] myDataset) {
+    public MyAdapter(ArrayList<String> myDataset) {
         mDataset = myDataset;
     }
 
@@ -122,9 +132,21 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof TextViewHolder) {
-            ((TextViewHolder) holder).mTextView.setText(mDataset[position]);
+            final TextViewHolder textViewHolder = (TextViewHolder) holder;
+            textViewHolder.mTextView.setText(mDataset.get(position));
+
+            if (mOnItemClickListener != null) {
+                ((TextViewHolder) holder).mTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int pos = textViewHolder.getLayoutPosition();
+                        mOnItemClickListener.onItemClick(textViewHolder.mTextView,pos);
+                    }
+                });
+            }
+
         } else if (holder instanceof ImageViewHolder) {
 
         } else if (holder instanceof HeaderViewHolder) {
@@ -135,7 +157,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 
     @Override
@@ -143,6 +165,27 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (position == 0) {
             return ViewHolerType.HEADER_VIEWHOLDER;
         }
-        return (position % 2) == 0 ? ViewHolerType.IMAGEVIEW_VIEWHOLDER : ViewHolerType.TEXTVIEW_VIEWHOLDER;
+//        return (position % 2) == 0 ? ViewHolerType.IMAGEVIEW_VIEWHOLDER : ViewHolerType.TEXTVIEW_VIEWHOLDER;
+        return ViewHolerType.TEXTVIEW_VIEWHOLDER;
     }
+
+
+    //insert/delete item;
+    public void addData(int position) {
+        mDataset.add(position, "newitem");
+        notifyItemInserted(position);
+    }
+
+    public void removeData(int position) {
+        mDataset.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+
+        void onItemLongClick(View view, int position);
+    }
+
+
 }
