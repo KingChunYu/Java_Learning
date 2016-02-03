@@ -909,3 +909,15 @@ while (true)
 - View是怎样被绘制的？
 每一个视图的绘制过程都必须经历三个最主要的阶段，即onMeasure()、onLayout()和onDraw()View系统的绘制流程会从ViewRoot的performTraversals()方法中开始，在其内部调用View的measure()方法。measure()方法接收两个参数，widthMeasureSpec和heightMeasureSpec，这两个值分别用于确定视图的宽度和高度的规格和大小.MeasureSpec的值由specSize和specMode共同组成的，其中specSize记录的是大小，specMode记录的是规格。specMode一共有三种类，EXACTLY，AT_MOST,UNSPECIFIED.
 详情参考:[View的绘制过程](http://blog.csdn.net/guolin_blog/article/details/16330267)
+
+
+## <a name="20160121"> **2016年1月21日**
+### <a name="java044"> **Java中的反射机制简单应用**
+－ 什么是反射机制？
+   反射机制就是可以把一个类,类的成员(函数,属性),当成一个对象来操作,希望读者能理解,也就是说,类,类的成员,我们在运行的时候还可以动态地去操作他们
+－ 反射机制的作用？
+   简单的来说，就是可以增加编程的灵活性，最常用应用就是ClassFromClassName这种应用。具体详细参考[反射机制](http://blog.csdn.net/coder_pig/article/details/44784399)
+
+
+## <a name="20160122"> **2016年1月22日**
+### <a name="java045"> **MVVM模式，MVC模式，MVP**
