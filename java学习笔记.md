@@ -921,3 +921,6 @@ while (true)
 
 ## <a name="20160122"> **2016年1月22日**
 ### <a name="java045"> **MVVM模式，MVC模式，MVP**
+- 详情参考博文[MVVM模式，MVC模式，MVP](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
+
+##
