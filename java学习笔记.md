@@ -56,6 +56,15 @@
     * [2016年1月15日](#20160115)
         * [Android中的synchronized详解](#java040)：
         * [AIDL介绍](#java041)：
+    * [2016年1月20日](#20160120)
+          * [Android中LayoutInflater详解](#java042)：
+          * [Android中View绘制详解](#java043)：
+    * [2016年1月21日](#20160121)
+          * [Java中的反射机制简单应用](#java044)：
+    * [2016年1月22日](#20160122)
+          * [MVVM模式，MVC模式，MVP](#java045)：
+    * [2016年3月15日](#20160315)
+          * [ListView详细解析](#java046)：  
 
 
 
@@ -923,4 +932,10 @@ while (true)
 ### <a name="java045"> **MVVM模式，MVC模式，MVP**
 - 详情参考博文[MVVM模式，MVC模式，MVP](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
 
-##
+
+## <a name="20160315"> **2016年3月15日**
+### <a name="java046"> **ListView详细解析**
+- 详情参考博文[ListView全解析](http://blog.csdn.net/guolin_blog/article/details/44996879)
+- 侧重点RecycleBin 里的具体实现。
+- 两次Layout的过程(从layoutChildren开始入手)
+- 滑动加载更多数据的过程
