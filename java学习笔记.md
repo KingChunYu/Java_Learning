@@ -938,4 +938,6 @@ while (true)
 - 详情参考博文[ListView全解析](http://blog.csdn.net/guolin_blog/article/details/44996879)
 - 侧重点RecycleBin 里的具体实现。
 - 两次Layout的过程(从layoutChildren开始入手)
-- 滑动加载更多数据的过程
+- 滑动加载更多数据的过程（AbsListView中的onTouchEvent中的逻辑，以及trackMotionScroll方法中View划出屏幕的处理逻辑,和view滑进屏幕的填充处理逻辑（fillDown和fillUp方法））
+- obtainView的拿去View的方法（从ScrapView的list中拿（往往已经移出去的View塞进了ScrapView中），或者新建）
+- **注意** 在obtainView中有个 mAdapter.getView(position, scrapView, this);  其实scrapView当作第二个参数传进去了。（不就是我们用的convertView吗！）
