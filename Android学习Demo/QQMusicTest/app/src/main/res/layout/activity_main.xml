@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chunyu.qqmusictest.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/widget_bg_color_deep_shadow"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/myPlayIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/landscape_player_btn_play_press" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/myPlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/widget_large_mask_bottom"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/myTop"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/colorAccent" />
+
+        <ImageView
+            android:id="@+id/myTarget"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/landscape_player_btn_play_press"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/myBottom"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/myRealPlayImage"
+        android:src="@drawable/landscape_player_btn_play_press"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+</RelativeLayout>

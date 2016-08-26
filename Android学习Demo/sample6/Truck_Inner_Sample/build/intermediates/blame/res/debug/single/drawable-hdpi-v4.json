@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/res/merged/debug/drawable-hdpi-v4/timepicker_up_normal.9.png",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/src/main/res/drawable-hdpi/timepicker_up_normal.9.png"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/res/merged/debug/drawable-hdpi-v4/btn_base_back_normal.9.png",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/src/main/res/drawable-hdpi/btn_base_back_normal.9.png"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/res/merged/debug/drawable-hdpi-v4/bg_base_title_bar.png",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/src/main/res/drawable-hdpi/bg_base_title_bar.png"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/res/merged/debug/drawable-hdpi-v4/bg_vertical_line.png",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/src/main/res/drawable-hdpi/bg_vertical_line.png"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/res/merged/debug/drawable-hdpi-v4/timepicker_down_normal.9.png",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/src/main/res/drawable-hdpi/timepicker_down_normal.9.png"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/res/merged/debug/drawable-hdpi-v4/btn_base_back_click.9.png",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/src/main/res/drawable-hdpi/btn_base_back_click.9.png"
+    }
+]

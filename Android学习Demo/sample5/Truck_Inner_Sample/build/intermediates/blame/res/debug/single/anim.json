@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/build/intermediates/res/merged/debug/anim/cycle_7.xml",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/src/main/res/anim/cycle_7.xml"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/build/intermediates/res/merged/debug/anim/shake.xml",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/src/main/res/anim/shake.xml"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/build/intermediates/res/merged/debug/anim/push_up_in.xml",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/src/main/res/anim/push_up_in.xml"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/build/intermediates/res/merged/debug/anim/zoomout.xml",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/src/main/res/anim/zoomout.xml"
+    },
+    {
+        "merged": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/build/intermediates/res/merged/debug/anim/zoomin.xml",
+        "source": "/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/src/main/res/anim/zoomin.xml"
+    }
+]

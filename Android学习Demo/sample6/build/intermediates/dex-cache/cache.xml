@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/libs/open_sdk_r5756.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="7f7bf100e53d9099032f113728725e1843e1fbe2">
+        <dex dex="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/pre-dexed/debug/open_sdk_r5756_ac602c64c838e49c63b27ebf77ce84ecd157e5cd.jar" />
+    </item>
+    <item
+        jar="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/libs/mta-sdk-1.6.2.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="c184c69f43b1fe46390f7123717c65bd844bccb6">
+        <dex dex="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/pre-dexed/debug/mta-sdk-1.6.2_28a61cbe4559e3cbde9225ffaeaf9391c061d5cf.jar" />
+    </item>
+    <item
+        jar="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/libs/android-support-v4.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="612846c9857077a039b533718f72db3bc041d389">
+        <dex dex="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample6/Truck_Inner_Sample/build/intermediates/pre-dexed/debug/android-support-v4_fe9b3f5ae3cd1c3fe14ad6e9e2dc189da4f9f5e7.jar" />
+    </item>
+
+</items>

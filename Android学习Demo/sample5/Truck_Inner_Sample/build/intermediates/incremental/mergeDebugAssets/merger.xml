@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/src/main/assets"/><source path="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/chunyu/Desktop/Java_Learning/Android学习Demo/sample5/Truck_Inner_Sample/src/debug/assets"/></dataSet></merger>
